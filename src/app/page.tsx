@@ -132,10 +132,6 @@ export default async function HomePage() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
-              <div className="inline-flex items-center rounded-full border border-brand-500/20 bg-brand-500/10 px-4 py-2 text-sm font-medium text-brand-600 dark:text-brand-400 backdrop-blur">
-                Trusted by 50,000+ shoppers
-              </div>
-
               <h1 className="mt-6 text-4xl sm:text-5xl lg:text-7xl font-black leading-tight text-gray-900 dark:text-white">
                 Shop Everything
                 <span className="block bg-gradient-to-r from-brand-500 to-orange-500 bg-clip-text text-transparent">
@@ -262,9 +258,8 @@ export default async function HomePage() {
                 <div
                   className="
               absolute
-              -left-8
+              -left-12
               top-10
-              rounded-2xl
               bg-white
               dark:bg-slate-800
               px-5
@@ -275,7 +270,7 @@ export default async function HomePage() {
               dark:border-gray-700
             "
                 >
-                  <div className="font-semibold text-green-500">
+                  <div className="text-green-500">
                     Free Shipping
                   </div>
                 </div>
@@ -294,10 +289,10 @@ export default async function HomePage() {
               <Link
                 key={cat.name}
                 href={cat.href}
-                className="group flex flex-col items-center gap-3 p-4 rounded-2xl bg-white dark:bg-gray-900 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                className="group flex flex-col items-center gap-3 p-4  bg-white dark:bg-gray-900 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
               >
                 <div
-                  className={`w-14 h-14 bg-gradient-to-br ${cat.color} rounded-2xl flex items-center justify-center shadow-lg`}
+                  className={`w-14 h-14 bg-gradient-to-br ${cat.color}  flex items-center justify-center shadow-lg`}
                 >
                   <Icon className="w-7 h-7 text-white group-hover:scale-110 transition-transform" />
                 </div>
@@ -321,7 +316,7 @@ export default async function HomePage() {
               return (
                 <div
                   key={item.title}
-                  className="flex items-start gap-4 p-5 rounded-2xl bg-white dark:bg-gray-800 shadow-sm hover:shadow-lg transition-all duration-300"
+                  className="flex items-start gap-4 p-5 bg-white dark:bg-gray-800 shadow-sm hover:shadow-lg transition-all duration-300"
                 >
                   <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-100 dark:bg-brand-900/20">
                     <Icon className="h-6 w-6 text-brand-500" />
