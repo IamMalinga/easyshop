@@ -46,7 +46,7 @@ export function Navbar() {
         <div className="flex items-center justify-between h-16 gap-4">
           {/* Logo */}
           <Link href="/" className="text-2xl font-bold text-brand-500 flex-shrink-0">
-            EasyShop
+            Aurelia Market
           </Link>
 
           {/* Search */}

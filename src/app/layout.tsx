@@ -16,8 +16,11 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: 'EasyShop - Modern E-Commerce',
+  title: 'Aurelia Market - Modern E-Commerce',
   description: 'Shop the latest products with the best deals',
+    icons: {
+    icon: '/favicon.ico',
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -32,7 +35,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div className="col-span-1 md:col-span-2">
-                  <h3 className="text-2xl font-bold text-brand-500 mb-3">EasyShop</h3>
+                  <h3 className="text-2xl font-bold text-brand-500 mb-3">Aurelia Market</h3>
                   <p className="text-gray-500 dark:text-gray-400 text-sm">
                     Your one-stop destination for quality products at unbeatable prices.
                   </p>
@@ -57,7 +60,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 </div>
               </div>
               <div className="border-t border-gray-200 dark:border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
-                © {new Date().getFullYear()} EasyShop. All rights reserved.
+                © {new Date().getFullYear()} Dragon Labs. All rights reserved.
               </div>
             </div>
           </footer>

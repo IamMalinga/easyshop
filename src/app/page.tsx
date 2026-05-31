@@ -2,6 +2,20 @@ import Link from 'next/link';
 import { ProductCard } from '@/components/product/ProductCard';
 import dbConnect from '@/lib/db';
 import Product from '@/models/Product';
+import {
+  FiTruck,
+  FiShield,
+  FiRefreshCw,
+  FiMessageCircle,
+  FiMonitor,
+  FiShoppingBag,
+  FiBook,
+  FiHome,
+  FiActivity,
+  FiHeart,
+  FiGift,
+  FiCoffee,
+} from 'react-icons/fi';
 
 async function getFeaturedProducts() {
   await dbConnect();
@@ -15,15 +29,79 @@ async function getNewArrivals() {
   return JSON.parse(JSON.stringify(products));
 }
 
+const features = [
+  {
+    icon: FiTruck,
+    title: 'Free Shipping',
+    desc: 'On orders over $50',
+  },
+  {
+    icon: FiShield,
+    title: 'Secure Payment',
+    desc: 'SSL encrypted checkout',
+  },
+  {
+    icon: FiRefreshCw,
+    title: 'Easy Returns',
+    desc: '30-day return policy',
+  },
+  {
+    icon: FiMessageCircle,
+    title: '24/7 Support',
+    desc: 'Always here to help',
+  },
+];
+
+
 const categories = [
-  { name: 'Electronics', icon: '💻', color: 'from-blue-500 to-cyan-500', href: '/products?category=electronics' },
-  { name: 'Clothing', icon: '👕', color: 'from-purple-500 to-pink-500', href: '/products?category=clothing' },
-  { name: 'Books', icon: '📚', color: 'from-green-500 to-emerald-500', href: '/products?category=books' },
-  { name: 'Home', icon: '🏠', color: 'from-orange-500 to-amber-500', href: '/products?category=home' },
-  { name: 'Sports', icon: '⚽', color: 'from-red-500 to-rose-500', href: '/products?category=sports' },
-  { name: 'Beauty', icon: '✨', color: 'from-pink-500 to-fuchsia-500', href: '/products?category=beauty' },
-  { name: 'Toys', icon: '🎮', color: 'from-yellow-500 to-orange-500', href: '/products?category=toys' },
-  { name: 'Food', icon: '🍕', color: 'from-lime-500 to-green-500', href: '/products?category=food' },
+  {
+    name: 'Electronics',
+    icon: FiMonitor,
+    color: 'from-blue-500 to-cyan-500',
+    href: '/products?category=electronics',
+  },
+  {
+    name: 'Clothing',
+    icon: FiShoppingBag,
+    color: 'from-purple-500 to-pink-500',
+    href: '/products?category=clothing',
+  },
+  {
+    name: 'Books',
+    icon: FiBook,
+    color: 'from-green-500 to-emerald-500',
+    href: '/products?category=books',
+  },
+  {
+    name: 'Home',
+    icon: FiHome,
+    color: 'from-orange-500 to-amber-500',
+    href: '/products?category=home',
+  },
+  {
+    name: 'Sports',
+    icon: FiActivity,
+    color: 'from-red-500 to-rose-500',
+    href: '/products?category=sports',
+  },
+  {
+    name: 'Beauty',
+    icon: FiHeart,
+    color: 'from-pink-500 to-fuchsia-500',
+    href: '/products?category=beauty',
+  },
+  {
+    name: 'Toys',
+    icon: FiGift,
+    color: 'from-yellow-500 to-orange-500',
+    href: '/products?category=toys',
+  },
+  {
+    name: 'Food',
+    icon: FiCoffee,
+    color: 'from-lime-500 to-green-500',
+    href: '/products?category=food',
+  },
 ];
 
 export default async function HomePage() {
@@ -71,42 +149,61 @@ export default async function HomePage() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <h2 className="text-2xl font-bold mb-8">Shop by Category</h2>
         <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-8 gap-3">
-          {categories.map(cat => (
-            <Link
-              key={cat.name}
-              href={cat.href}
-              className="group flex flex-col items-center gap-3 p-4 card hover:shadow-md transition-all hover:-translate-y-1"
-            >
-              <div className={`w-12 h-12 bg-gradient-to-br ${cat.color} rounded-xl flex items-center justify-center text-2xl group-hover:scale-110 transition-transform`}>
-                {cat.icon}
-              </div>
-              <span className="text-xs font-medium text-center leading-tight">{cat.name}</span>
-            </Link>
-          ))}
+         {categories.map((cat) => {
+  const Icon = cat.icon;
+
+  return (
+    <Link
+      key={cat.name}
+      href={cat.href}
+      className="group flex flex-col items-center gap-3 p-4 rounded-2xl bg-white dark:bg-gray-900 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+    >
+      <div
+        className={`w-14 h-14 bg-gradient-to-br ${cat.color} rounded-2xl flex items-center justify-center shadow-lg`}
+      >
+        <Icon className="w-7 h-7 text-white group-hover:scale-110 transition-transform" />
+      </div>
+
+      <span className="text-xs font-medium text-center">
+        {cat.name}
+      </span>
+    </Link>
+  );
+})}
         </div>
       </section>
 
       {/* Value Props */}
-      <section className="bg-gray-50 dark:bg-gray-900/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {[
-              { icon: '🚚', title: 'Free Shipping', desc: 'On orders over $50' },
-              { icon: '🔒', title: 'Secure Payment', desc: 'SSL encrypted checkout' },
-              { icon: '↩️', title: 'Easy Returns', desc: '30-day return policy' },
-              { icon: '💬', title: '24/7 Support', desc: 'Always here to help' },
-            ].map(item => (
-              <div key={item.title} className="flex items-start gap-3 p-4">
-                <span className="text-3xl">{item.icon}</span>
-                <div>
-                  <h3 className="font-semibold text-sm">{item.title}</h3>
-                  <p className="text-xs text-gray-500 mt-0.5">{item.desc}</p>
-                </div>
-              </div>
-            ))}
+<section className="bg-gray-50 dark:bg-gray-900/50">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+      {features.map((item) => {
+        const Icon = item.icon;
+
+        return (
+          <div
+            key={item.title}
+            className="flex items-start gap-4 p-5 rounded-2xl bg-white dark:bg-gray-800 shadow-sm hover:shadow-lg transition-all duration-300"
+          >
+            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-100 dark:bg-brand-900/20">
+              <Icon className="h-6 w-6 text-brand-500" />
+            </div>
+
+            <div>
+              <h3 className="font-semibold text-sm">
+                {item.title}
+              </h3>
+
+              <p className="text-xs text-gray-500 mt-1">
+                {item.desc}
+              </p>
+            </div>
           </div>
-        </div>
-      </section>
+        );
+      })}
+    </div>
+  </div>
+</section>
 
       {/* Featured Products */}
       {featuredProducts.length > 0 && (
